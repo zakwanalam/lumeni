@@ -1,0 +1,78 @@
+<div class="bg-lumeni-bg py-24 lg:py-32">
+  <div class="max-w-[1280px] px-6 mx-auto lg:px-12">
+    <div class="flex flex-col space-y-16">
+      
+      <!-- Top Title -->
+      <div class="flex flex-col space-y-4 max-w-2xl">
+        <span class="readout-label">SYSTEM CORE PHILOSOPHY // 01</span>
+        <h2 class="text-5xl font-bold tracking-tightest lg:text-7xl text-lumeni-text uppercase leading-none">
+          {{ section.settings.title }}
+        </h2>
+      </div>
+
+      <!-- Feature Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        {% for block in section.blocks %}
+          <div class="flex flex-col space-y-6 group p-8 bg-lumeni-surface hover:bg-lumeni-bright transition-all duration-500 rounded-sm">
+            <div class="flex items-center justify-between">
+              <span class="text-4xl font-extrabold tracking-tightest text-lumeni-accent group-hover:scale-110 transition-transform duration-500">
+                0{{ forloop.index }}
+              </span>
+              <div class="w-12 h-[1px] bg-lumeni-outline opacity-30 group-hover:w-full group-hover:bg-lumeni-accent transition-all duration-700"></div>
+            </div>
+            <h3 class="text-xl font-bold tracking-technical text-lumeni-text uppercase">{{ block.settings.heading }}</h3>
+            <p class="text-sm leading-relaxed text-lumeni-text-muted">{{ block.settings.content }}</p>
+            <div class="pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <span class="readout-label text-[10px]">PROTOCOL ACTIVATED</span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Lumeni Brand Editorial",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "ENGINEERING PERFORMANCE"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Block Heading",
+          "default": "PRECISION FABRICATION"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Block Content",
+          "default": "Utilizing multi-filament weaving techniques to ensure thermal regulation across specialized pressure zones."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumeni Brand Editorial",
+      "blocks": [
+        { "type": "feature" },
+        { "type": "feature" },
+        { "type": "feature" }
+      ]
+    }
+  ]
+}
+{% endschema %}

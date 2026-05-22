@@ -1,0 +1,61 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-lumeni-v2",
+      "settings": {
+        "description": "High-performance technical gear for the next generation of industrial operators. Precision-built. Protocol-activated.",
+        "primary_url": "/collections/all",
+        "secondary_url": "/pages/specs"
+      }
+    },
+    "archetypes": {
+      "type": "core-archetypes",
+      "blocks": {
+        "b1": { "type": "archetype", "settings": { "heading": "MODULAR ARMOR", "label": "SYS_01" } },
+        "b2": { "type": "archetype", "settings": { "heading": "THERMAL CORE", "label": "SYS_02" } },
+        "b3": { "type": "archetype", "settings": { "heading": "SHELL GRID", "label": "SYS_03" } },
+        "b4": { "type": "archetype", "settings": { "heading": "CORE LINK", "label": "SYS_04" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"],
+      "settings": {}
+    },
+    "resistance": {
+      "type": "unyielding-resistance",
+      "blocks": {
+        "s1": { "type": "spec", "settings": { "title": "CARBON_FIBER_WEAVE" } },
+        "s2": { "type": "spec", "settings": { "title": "THERMO_INSULATION" } },
+        "s3": { "type": "spec", "settings": { "title": "KINETIC_DAMPING" } }
+      },
+      "block_order": ["s1", "s2", "s3"],
+      "settings": {}
+    },
+    "artifact": {
+      "type": "flagship-artifact",
+      "settings": {
+        "url": "/products/flagship-unit"
+      }
+    },
+    "comparison": {
+      "type": "modular-comparison",
+      "settings": {}
+    },
+    "reports": {
+      "type": "tactical-reports",
+      "blocks": {
+        "r1": { "type": "report", "settings": { "author": "ALPHA_01", "rank": "SR_OPERATOR" } },
+        "r2": { "type": "report", "settings": { "author": "DELTA_04", "rank": "ENGINEER" } },
+        "r3": { "type": "report", "settings": { "author": "OMEGA_09", "rank": "PROTOCOL_LEAD" } }
+      },
+      "block_order": ["r1", "r2", "r3"],
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "archetypes",
+    "resistance",
+    "artifact",
+    "comparison",
+    "reports"
+  ]
+}

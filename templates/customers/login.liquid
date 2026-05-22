@@ -1,0 +1,39 @@
+<section class="bg-black text-white min-h-screen flex items-center justify-center p-6 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]">
+  <div class="w-full max-w-lg bg-lumeni-surface border border-white border-opacity-10 p-12 space-y-12 shadow-2xl">
+    
+    <div class="flex flex-col space-y-2 text-center">
+       <span class="readout-label text-lumeni-accent text-[10px]">ACCESS PROTOCOL // V2</span>
+       <h1 class="text-4xl font-bold font-display uppercase tracking-tightest leading-none">INITIALIZE LOGIN</h1>
+    </div>
+
+    {% form 'customer_login', class: 'space-y-8' %}
+       {{ form.errors | default_errors }}
+
+       <div class="space-y-6">
+          <div class="flex flex-col space-y-2">
+             <label for="CustomerEmail" class="readout-label text-[9px] opacity-40">EMAIL_COORDINATES</label>
+             <input type="email" name="customer[email]" id="CustomerEmail" class="w-full bg-black border border-white border-opacity-10 py-4 px-6 text-xs font-bold font-display uppercase tracking-technical focus:border-lumeni-accent transition-all" placeholder="USER@MAINFRAME.COM">
+          </div>
+
+          <div class="flex flex-col space-y-2">
+             <div class="flex justify-between items-center">
+                <label for="CustomerPassword" class="readout-label text-[9px] opacity-40">ACCESS_PIN</label>
+                <a href="#recover" class="text-[8px] readout-label opacity-40 hover:text-lumeni-accent transition-colors">FORGOT_PIN?</a>
+             </div>
+             <input type="password" name="customer[password]" id="CustomerPassword" class="w-full bg-black border border-white border-opacity-10 py-4 px-6 text-xs font-bold font-display uppercase tracking-technical focus:border-lumeni-accent transition-all" placeholder="••••••••">
+          </div>
+       </div>
+
+       <div class="flex flex-col space-y-6 pt-6">
+          <button type="submit" class="w-full bg-lumeni-accent text-black py-5 text-sm font-bold tracking-technical uppercase transition-all hover:tracking-widest">
+             ACCESS ACCOUNT
+          </button>
+          <div class="flex justify-between items-center text-[10px] readout-label opacity-40 uppercase">
+             <span>NEW UNIT?</span>
+             <a href="/account/register" class="text-lumeni-accent hover:opacity-100 transition-opacity">CREATE_ACCOUNT</a>
+          </div>
+       </div>
+    {% endform %}
+
+  </div>
+</section>

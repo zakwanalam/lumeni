@@ -1,0 +1,66 @@
+<footer class="bg-[#080808] py-24 border-t border-white border-opacity-5">
+  <div class="px-6 mx-auto lg:px-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-24 mb-20">
+      
+      <!-- Mission Column -->
+      <div class="flex flex-col space-y-8">
+        <div class="flex flex-col space-y-2">
+          <span class="readout-label">ABOUT US</span>
+          <h2 class="text-xl font-bold font-display uppercase tracking-technical text-white">LUMENI</h2>
+        </div>
+        <p class="text-xs leading-relaxed text-lumeni-text-muted uppercase tracking-widest opacity-60">
+          Engineering high-performance tech gadgets and travel gear for modern nomads. Designed for the mission. Built to last.
+        </p>
+      </div>
+
+      <!-- Quick Resources -->
+      <div class="flex flex-col space-y-8">
+        <span class="readout-label">QUICK LINKS</span>
+        <nav class="flex flex-col space-y-4">
+          <a href="/collections/all" class="text-xs font-bold font-display uppercase tracking-technical text-lumeni-text hover:text-lumeni-accent transition-colors">SHOP GADGETS</a>
+          <a href="/pages/philosophy" class="text-xs font-bold font-display uppercase tracking-technical text-lumeni-text hover:text-lumeni-accent transition-colors">OUR PHILOSOPHY</a>
+          <a href="/pages/faq" class="text-xs font-bold font-display uppercase tracking-technical text-lumeni-text hover:text-lumeni-accent transition-colors">FAQ SYSTEM</a>
+        </nav>
+      </div>
+
+      <!-- Support System -->
+      <div class="flex flex-col space-y-8">
+        <span class="readout-label">SUPPORT PROTOCOL</span>
+        <nav class="flex flex-col space-y-4">
+          <a href="/pages/shipping" class="text-xs font-bold font-display uppercase tracking-technical text-lumeni-text hover:text-lumeni-accent transition-colors">SHIPPING POLICY</a>
+          <a href="/pages/returns" class="text-xs font-bold font-display uppercase tracking-technical text-lumeni-text hover:text-lumeni-accent transition-colors">RETURNS & EXCHANGES</a>
+          <a href="/pages/faq" class="text-xs font-bold font-display uppercase tracking-technical text-lumeni-text hover:text-lumeni-accent transition-colors">FAQ</a>
+        </nav>
+      </div>
+
+      <!-- Contact Ops -->
+      <div class="flex flex-col space-y-8">
+        <span class="readout-label">CONTACT US</span>
+        <nav class="flex flex-col space-y-4">
+          <p class="text-xs font-bold font-display uppercase tracking-technical text-lumeni-text">HEADQUARTERS // NYC</p>
+          <a href="/pages/contact" class="text-xs font-bold font-display uppercase tracking-technical text-lumeni-accent hover:opacity-70 transition-opacity">SEND A MESSAGE</a>
+        </nav>
+      </div>
+
+    </div>
+
+    <!-- Final Legal Status -->
+    <div class="pt-12 border-t border-white border-opacity-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+       <div class="text-[9px] font-bold tracking-widest text-lumeni-text opacity-30 uppercase font-display">
+         © {{ "now" | date: "%Y" }} LUMENI INDUSTRIES. // ALL RIGHTS RESERVED
+       </div>
+       <div class="flex gap-8">
+          <span class="readout-label text-[8px] opacity-20">SECURE PAYMENT</span>
+          <span class="readout-label text-[8px] opacity-20">ESTABLISHED 2026</span>
+       </div>
+    </div>
+
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Lumeni Footer V2",
+  "settings": []
+}
+{% endschema %}

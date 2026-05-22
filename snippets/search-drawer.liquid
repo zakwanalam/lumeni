@@ -1,0 +1,35 @@
+<div id="SearchDrawer" class="drawer fixed top-0 left-0 w-full h-[60vh] bg-black bg-opacity-95 z-[100] -translate-y-full transition-transform duration-500 ease-in-out border-b border-white border-opacity-5">
+  <div class="flex flex-col h-full items-center justify-center relative px-6">
+    
+    <button class="CloseDrawer absolute top-12 right-12 text-white hover:text-lumeni-accent transition-colors">
+       <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="1.5"/></svg>
+    </button>
+
+    <div class="w-full max-w-4xl flex flex-col space-y-12">
+       <div class="flex flex-col space-y-2">
+          <span class="readout-label text-[10px] text-lumeni-accent">QUERY // PROTOCOL</span>
+          <form action="/search" method="get" class="relative group">
+             <input type="text" name="q" placeholder="SEARCH SYSTEM..." class="w-full bg-transparent border-b border-white border-opacity-20 py-8 text-5xl md:text-7xl font-bold font-display uppercase tracking-tightest text-white focus:outline-none focus:border-lumeni-accent transition-colors placeholder:opacity-20 italic">
+             <button type="submit" class="absolute right-0 bottom-4 text-lumeni-accent">
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-width="2.5"/></svg>
+             </button>
+          </form>
+       </div>
+
+       <div class="flex flex-wrap items-center gap-8">
+          <span class="readout-label text-[9px] opacity-40">SUGGESTIONS:</span>
+          <a href="/search?q=CHARGERS" class="text-xs font-bold font-display uppercase tracking-technical hover:text-lumeni-accent transition-colors">CHARGERS</a>
+          <a href="/search?q=CASES" class="text-xs font-bold font-display uppercase tracking-technical hover:text-lumeni-accent transition-colors">CASES</a>
+          <a href="/search?q=TRAVEL" class="text-xs font-bold font-display uppercase tracking-technical hover:text-lumeni-accent transition-colors">TRAVEL</a>
+          <a href="/search?q=PRO" class="text-xs font-bold font-display uppercase tracking-technical hover:text-lumeni-accent transition-colors">PRO SERIES</a>
+       </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  #SearchDrawer.active {
+    transform: translateY(0);
+  }
+</style>

@@ -1,0 +1,177 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#131313">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    <title>{{ page_title }}</title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {{ content_for_header }}
+
+    <!-- Typography: Space Grotesk & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (via CDN for rapid production prototype) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              lumeni: {
+                bg: '#000000',
+                surface: '#131313',
+                lowest: '#080808',
+                bright: '#393939',
+                accent: '#FFB1C0', // Safety Pink Master
+                text: '#E2E2E2',
+                'text-muted': '#878787',
+                outline: '#574145'
+              }
+            },
+            fontFamily: {
+              display: ['Space Grotesk', 'sans-serif'],
+              sans: ['Inter', 'sans-serif'],
+            },
+            letterSpacing: {
+              tightest: '-.02em',
+              technical: '.1em',
+            },
+            boxShadow: {
+              'frosted': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      :root {
+        --color-bg: #000000;
+        --color-surface: #131313;
+        --color-text: #E2E2E2;
+        --color-accent: #FFB1C0;
+        --font-display: 'Space Grotesk', sans-serif;
+        --font-body: 'Inter', sans-serif;
+      }
+
+      body {
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        font-family: var(--font-body);
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      h1, h2, h3, h4, h5, h6, .font-display {
+        font-family: var(--font-display);
+        letter-spacing: -0.02em;
+      }
+
+      /* No-Line Rule: Boundaries defined by tonal shifts, not borders */
+      .no-line section, .no-line div {
+        border: none !important;
+      }
+
+      /* Technical Readout Style */
+      .readout-label {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-weight: 700;
+        color: var(--color-accent);
+        font-family: var(--font-display);
+      }
+
+      /* Custom Scrollbar for Lumeni Dark Mode */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #080808;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #393939;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #FFB1C0;
+      }
+
+      .backdrop-blur-frosted {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+    </style>
+  </head>
+
+  <body class="no-line bg-lumeni-bg text-lumeni-text font-sans selection:bg-lumeni-accent selection:text-lumeni-lowest">
+    <div id="DrawerOverlay" class="fixed inset-0 bg-black bg-opacity-80 transition-opacity duration-500 opacity-0 pointer-events-none z-[90]"></div>
+
+    {% render 'mobile-menu' %}
+    {% render 'cart-drawer' %}
+    {% render 'search-drawer' %}
+
+    {% section 'header-lumeni' %}
+
+    <main id="MainContent" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer-lumeni-v2' %}
+
+    <script>
+      // Lumeni Core UI Logic
+      const UI = {
+        openDrawer: (id) => {
+          const drawer = document.getElementById(id);
+          const overlay = document.getElementById('DrawerOverlay');
+          if (drawer) drawer.classList.add('active');
+          if (overlay) {
+            overlay.classList.add('opacity-100', 'pointer-events-auto');
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+          }
+          document.body.style.overflow = 'hidden';
+        },
+        closeAll: () => {
+          document.querySelectorAll('.drawer.active').forEach(d => d.classList.remove('active'));
+          const overlay = document.getElementById('DrawerOverlay');
+          if (overlay) {
+            overlay.classList.remove('opacity-100', 'pointer-events-auto');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+          }
+          document.body.style.overflow = '';
+        }
+      };
+
+      // Event Listeners
+      document.addEventListener('DOMContentLoaded', () => {
+        // Triggers
+        document.getElementById('OpenMobileMenu')?.addEventListener('click', () => UI.openDrawer('MobileMenuDrawer'));
+        document.getElementById('OpenCart')?.addEventListener('click', () => UI.openDrawer('CartDrawer'));
+        document.getElementById('OpenSearch')?.addEventListener('click', () => UI.openDrawer('SearchDrawer'));
+
+        // Closers
+        document.querySelectorAll('.CloseDrawer').forEach(btn => {
+          btn.addEventListener('click', () => UI.closeAll());
+        });
+        document.getElementById('DrawerOverlay')?.addEventListener('click', () => UI.closeAll());
+
+        // Escape Key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') UI.closeAll();
+        });
+      });
+    </script>
+  </body>
+</html>

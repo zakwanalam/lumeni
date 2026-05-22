@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "hero-industrial",
+      "settings": {
+        "title": "PROTOCOL_PAGE",
+        "description": "Accessing technical documentation and system information."
+      }
+    }
+  },
+  "order": ["main"]
+}

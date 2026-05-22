@@ -1,0 +1,73 @@
+<div class="bg-lumeni-lowest py-20 lg:py-28">
+  <div class="max-w-[1440px] px-6 mx-auto lg:px-12">
+    
+    <!-- Section Header -->
+    <div class="flex items-end justify-between mb-16 border-b border-lumeni-outline border-opacity-20 pb-8">
+      <div class="flex flex-col space-y-2">
+        <span class="readout-label">COLLECTION_MANIFEST // GRID</span>
+        <h2 class="text-4xl font-bold tracking-tightest lg:text-5xl text-lumeni-text uppercase">
+          {{ section.settings.title }}
+        </h2>
+      </div>
+      <a href="{{ section.settings.collection.url }}" class="hidden sm:inline-flex items-center text-sm font-semibold tracking-technical text-lumeni-accent uppercase transition-colors hover:text-lumeni-text">
+        View All Systems <span class="ml-2">→</span>
+      </a>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-6">
+      {%- assign collection = collections[section.settings.collection] -%}
+      {%- for product in collection.products limit: section.settings.product_count -%}
+        {% render 'product-card', product: product %}
+      {%- else -%}
+        {%- for i in (1..section.settings.product_count) -%}
+          <div class="bg-lumeni-surface p-6 rounded-sm animate-pulse h-[400px] flex items-center justify-center text-lumeni-text-muted uppercase text-xs tracking-technical">
+            Artifact_Loading...
+          </div>
+        {%- endfor -%}
+      {%- endfor -%}
+    </div>
+
+    <!-- Mobile CTA -->
+    <div class="mt-12 sm:hidden text-center">
+      <a href="{{ section.settings.collection.url }}" class="inline-flex items-center px-8 py-4 text-xs font-bold tracking-technical bg-lumeni-accent text-lumeni-lowest rounded-sm uppercase">
+        View All Systems
+      </a>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Lumeni Featured Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "SYSTEM CORE SELECTIONS"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "product_count",
+      "min": 4,
+      "max": 12,
+      "step": 4,
+      "label": "Product Count",
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumeni Featured Collection",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

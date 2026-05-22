@@ -1,0 +1,85 @@
+<section class="py-32 bg-lumeni-surface relative overflow-hidden">
+  <div class="px-6 mx-auto lg:px-12 relative z-10">
+    
+    <div class="flex flex-col items-center text-center space-y-4 mb-24">
+      <span class="readout-label">FEATURED // 01</span>
+      <h2 class="text-5xl md:text-7xl font-bold font-display uppercase tracking-tightest leading-none text-lumeni-text">
+        THE FLAGSHIP GADGET
+      </h2>
+    </div>
+
+    <!-- Central Annotated Stage -->
+    <div class="relative max-w-5xl mx-auto flex items-center justify-center p-20 min-h-[600px]">
+      
+      <!-- Annotated Callouts (Absolute Positioned) -->
+      <div class="absolute top-0 left-0 lg:left-12 p-6 flex flex-col space-y-1 items-start text-left max-w-[200px] z-20">
+        <span class="readout-label text-[10px]">FAST CHARGING</span>
+        <h4 class="text-sm font-bold font-display text-lumeni-text uppercase italic">100W POWER DELIVERY</h4>
+        <div class="w-full h-px bg-white bg-opacity-20 mt-2"></div>
+      </div>
+
+      <div class="absolute bottom-12 right-0 lg:right-12 p-6 flex flex-col space-y-1 items-end text-right max-w-[200px] z-20">
+        <span class="readout-label text-[10px]">CONNECTIVITY</span>
+        <h4 class="text-sm font-bold font-display text-lumeni-text uppercase italic">UNIVERSAL PORTS</h4>
+        <div class="w-full h-px bg-white bg-opacity-20 mt-2"></div>
+      </div>
+
+      <div class="absolute top-1/2 -translate-y-1/2 right-4 p-6 hidden lg:flex flex-col space-y-1 items-start text-left max-w-[200px] z-20">
+        <span class="readout-label text-[10px]">SIGNAL STRENGTH</span>
+        <h4 class="text-sm font-bold font-display text-lumeni-text uppercase italic">ENCRYPTED FLOW</h4>
+      </div>
+
+      <!-- Main Visual -->
+      <div class="w-full h-full relative group">
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: class: 'w-full h-full object-contain filter drop-shadow-[0_20px_50px_rgba(255,177,192,0.15)] group-hover:scale-105 transition-transform duration-1000' }}
+        {% else %}
+          <div class="w-full aspect-square bg-[#080808] flex items-center justify-center border border-white border-opacity-5 p-20">
+             <div class="readout-label opacity-10">ARTIFACT ISOLATION ZONE</div>
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+
+    <div class="flex flex-col items-center mt-20">
+      <a href="{{ section.settings.url }}" class="bg-lumeni-accent text-black px-12 py-5 text-sm font-bold tracking-technical uppercase transition-all duration-300 hover:tracking-widest">
+        SHOP NOW
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Perspective Backdrop Grid -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.03] scale-125 select-none overflow-hidden">
+     <div class="grid grid-cols-12 h-full">
+        {% for i in (1..12) %}<div class="border-r border-white"></div>{% endfor %}
+     </div>
+     <div class="absolute inset-0 flex flex-col justify-between">
+        {% for i in (1..10) %}<div class="w-full border-b border-white"></div>{% endfor %}
+     </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Flagship Artifact",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Featured Product Artifact"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Link URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Flagship Artifact"
+    }
+  ]
+}
+{% endschema %}

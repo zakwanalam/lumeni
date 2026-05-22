@@ -1,0 +1,86 @@
+<div id="CartDrawer" class="drawer fixed right-0 top-0 h-full w-full md:w-[450px] bg-black z-[100] translate-x-full transition-transform duration-500 ease-in-out border-l border-white border-opacity-5">
+  <div class="flex flex-col h-full bg-black">
+    
+    <!-- Header -->
+    <div class="p-8 flex items-center justify-between border-b border-white border-opacity-10">
+      <div class="flex flex-col space-y-1">
+        <span class="readout-label text-[9px] opacity-40">CART STORAGE // 01</span>
+        <h2 class="text-3xl font-bold font-display uppercase tracking-tightest leading-none">CART</h2>
+      </div>
+      <button class="CloseDrawer text-lumeni-text hover:text-lumeni-accent transition-colors">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+
+    <!-- Scrollable Content -->
+    <div class="flex-grow overflow-y-auto p-8 custom-scrollbar">
+      {% if cart.item_count > 0 %}
+        <div class="flex flex-col space-y-12">
+          {% for item in cart.items %}
+            <div class="flex gap-8 group">
+              <!-- Thumbnail -->
+              <div class="w-24 h-24 bg-lumeni-surface flex-shrink-0 relative overflow-hidden">
+                <img src="{{ item.image | img_url: '240x240', crop: 'center' }}" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-lumeni-accent opacity-0 group-hover:opacity-10 transition-opacity"></div>
+              </div>
+
+              <!-- Info -->
+              <div class="flex flex-col justify-between flex-grow">
+                <div class="flex flex-col space-y-1">
+                   <h3 class="text-sm font-bold font-display text-lumeni-text uppercase italic tracking-technical group-hover:text-lumeni-accent transition-colors">
+                     {{ item.product.title }}
+                   </h3>
+                   {% unless item.product.has_only_default_variant %}
+                     <span class="text-[10px] readout-label opacity-40">{{ item.variant.title }}</span>
+                   {% endunless %}
+                </div>
+                
+                <div class="flex items-center justify-between">
+                   <span class="text-sm font-bold text-lumeni-text">{{ item.final_line_price | money }}</span>
+                   <div class="flex items-center gap-4">
+                      <span class="readout-label text-[8px] opacity-40">QTY: {{ item.quantity }}</span>
+                      <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="text-lumeni-accent text-[9px] font-bold tracking-technical uppercase opacity-40 hover:opacity-100">REMOVE</a>
+                   </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="h-full flex flex-col items-center justify-center text-center space-y-6">
+           <span class="readout-label opacity-20">STORAGE EMPTY</span>
+           <p class="text-xs uppercase tracking-widest text-lumeni-text-muted">No items detected in your active cart.</p>
+           <a href="/collections/all" class="bg-lumeni-accent text-black px-8 py-4 text-[10px] font-bold tracking-technical uppercase">START ACQUISITION</a>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Footer -->
+    {% if cart.item_count > 0 %}
+      <div class="p-8 bg-lumeni-surface border-t border-white border-opacity-5">
+        <div class="flex flex-col space-y-6">
+           <div class="flex justify-between items-center">
+              <span class="readout-label text-[10px] opacity-40">SUBTOTAL</span>
+              <span class="text-xl font-bold font-display text-white">{{ cart.total_price | money }}</span>
+           </div>
+           
+           <div class="flex flex-col space-y-3">
+              <p class="text-[9px] text-lumeni-text-muted uppercase tracking-widest">Taxes and shipping calculated at checkout.</p>
+              <form action="/cart" method="post">
+                <button type="submit" name="checkout" class="w-full bg-lumeni-accent text-black py-6 text-xs font-bold tracking-technical uppercase hover:tracking-widest transition-all">
+                  INITIALIZE CHECKOUT →
+                </button>
+              </form>
+           </div>
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+<style>
+  #CartDrawer.active {
+    transform: translateX(0);
+  }
+</style>

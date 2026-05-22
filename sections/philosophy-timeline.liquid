@@ -1,0 +1,74 @@
+<div class="bg-black text-white px-6 mx-auto lg:px-12 max-w-4xl py-24 space-y-24">
+    <div class="flex flex-col items-center text-center space-y-4">
+       <h2 class="text-6xl font-bold font-display uppercase tracking-tightest leading-none">{{ section.settings.title }}</h2>
+       <div class="w-12 h-px bg-white bg-opacity-20"></div>
+    </div>
+    <div class="space-y-16">
+       {%- for block in section.blocks -%}
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start group" {{ block.shopify_attributes }}>
+             <div class="md:col-span-2 text-4xl font-bold font-display text-lumeni-accent transition-all group-hover:scale-110 origin-left">{{ block.settings.year }}</div>
+             <div class="md:col-span-4 readout-label text-[10px] opacity-40 mt-3">{{ block.settings.event_label }}</div>
+             <div class="md:col-span-6 text-[11px] text-lumeni-text-muted uppercase tracking-widest leading-loose opacity-60">{{ block.settings.content }}</div>
+          </div>
+       {%- endfor -%}
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Philosophy Timeline",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "CHRONOLOGICAL RECORDS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "event",
+      "name": "Timeline Event",
+      "settings": [
+        {
+          "type": "text",
+          "id": "year",
+          "label": "Year",
+          "default": "2024"
+        },
+        {
+          "type": "text",
+          "id": "event_label",
+          "label": "Event Label",
+          "default": "MILESTONE ACHIEVED"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Details",
+          "default": "Lumeni was founded by a collective of aerospace engineers and industrial designers with the goal of bringing structural performance to consumer tech."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Philosophy Timeline",
+      "blocks": [
+        {
+          "type": "event",
+          "settings": { "year": "2018", "event_label": "FOUNDATION // PROJECT CORE" }
+        },
+        {
+          "type": "event",
+          "settings": { "year": "2020", "event_label": "THE V1 RELEASE" }
+        },
+        {
+          "type": "event",
+          "settings": { "year": "2023", "event_label": "GLOBAL EXPANSION" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

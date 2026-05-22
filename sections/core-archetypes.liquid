@@ -1,0 +1,85 @@
+<section class="py-24 bg-lumeni-surface border-t border-white border-opacity-5">
+  <div class="px-6 mx-auto lg:px-12">
+    
+    <div class="flex flex-col space-y-6 mb-16">
+      <span class="readout-label">COLLECTION // 01</span>
+      <h2 class="text-4xl md:text-5xl font-bold font-display uppercase tracking-tightest text-lumeni-text">
+        GEAR CATEGORIES
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
+      {% for block in section.blocks %}
+        <div class="group relative bg-black aspect-[3/4] overflow-hidden">
+          {% if block.settings.image != blank %}
+            {{ block.settings.image | image_url: width: 800 | image_tag: class: 'w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 contrast-125' }}
+          {% else %}
+            <div class="w-full h-full bg-lumeni-surface flex items-center justify-center">
+              <div class="readout-label opacity-10">NULL_ASSET</div>
+            </div>
+          {% endif %}
+
+          <!-- Card Content -->
+          <div class="absolute inset-x-0 bottom-0 p-8 flex flex-col space-y-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 bg-gradient-to-t from-black to-transparent">
+            <span class="readout-label text-[10px]">{{ block.settings.label | default: "EQUIPMENT" }}</span>
+            <h3 class="text-xl font-bold font-display text-lumeni-text uppercase italic">
+              {{ block.settings.heading }}
+            </h3>
+            <a href="{{ block.settings.url | default: '#' }}" class="text-[10px] font-bold tracking-technical text-lumeni-accent uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-500 inline-flex items-center gap-2">
+              SHOP NOW <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Core Archetypes Grid",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "archetype",
+      "name": "Archetype Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Technical Label",
+          "default": "SYSTEM_CORE"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "MODULAR ARMOR"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Core Archetypes Grid",
+      "blocks": [
+        { "type": "archetype", "settings": { "heading": "SMART WATCHES", "label": "PRO" } },
+        { "type": "archetype", "settings": { "heading": "TRAVEL CHARGERS", "label": "POWER" } },
+        { "type": "archetype", "settings": { "heading": "TECH SLEEVES", "label": "SHIELD" } },
+        { "type": "archetype", "settings": { "heading": "PRO AUDIO", "label": "SOUND" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

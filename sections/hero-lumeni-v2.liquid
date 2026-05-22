@@ -1,0 +1,82 @@
+<section class="relative min-h-[90vh] flex items-center bg-black overflow-hidden py-24 lg:py-0">
+  <div class="px-6 mx-auto lg:px-12 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      
+      <!-- Typography Stack -->
+      <div class="flex flex-col space-y-12">
+        <div class="flex flex-col space-y-4">
+          <span class="readout-label">ESTABLISHED // {{ "now" | date: "%Y" }}</span>
+          <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold font-display leading-[0.9] tracking-tightest uppercase text-lumeni-text">
+            THE FUTURE<br>OF TRAVEL <span class="text-lumeni-accent">TECH</span>
+          </h1>
+        </div>
+        
+        <p class="text-lg text-lumeni-text-muted max-w-lg leading-relaxed font-sans mt-4">
+          {{ section.settings.description | default: "High-performance essentials designed for life on the move. Explore our range of durable chargers, cases, and everyday tech." }}
+        </p>
+
+        <div class="flex flex-wrap gap-6 pt-4">
+          <a href="{{ section.settings.primary_url }}" class="bg-lumeni-accent text-black px-10 py-5 text-sm font-bold tracking-technical uppercase hover:opacity-80 transition-all duration-300">
+            SHOP ALL GADGETS
+          </a>
+          <a href="{{ section.settings.secondary_url }}" class="border border-lumeni-text border-opacity-30 text-lumeni-text px-10 py-5 text-sm font-bold tracking-technical uppercase hover:bg-white hover:text-black transition-all duration-300">
+            VIEW THE COLLECTION
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Visual Artifact -->
+      <div class="relative w-full aspect-square lg:aspect-auto lg:h-[80vh] flex items-center justify-center">
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: class: 'w-full h-full object-contain filter grayscale contrast-125 hover:grayscale-0 transition-all duration-700 brightness-90', loading: 'eager' }}
+        {% else %}
+          <div class="w-full h-full bg-lumeni-surface flex items-center justify-center p-20">
+             <div class="readout-label opacity-20">PRODUCT PREVIEW</div>
+          </div>
+        {% endif %}
+        
+        <!-- Technical Overlay Decals -->
+        <div class="absolute top-0 right-0 p-8 border-r border-t border-lumeni-accent border-opacity-20 hidden lg:block">
+          <div class="readout-label text-[9px] opacity-40">MODEL // X-24</div>
+        </div>
+        <div class="absolute bottom-12 left-12 p-4 border-l border-b border-lumeni-accent border-opacity-20 hidden lg:block">
+          <div class="readout-label text-[9px] opacity-40">STATUS // READY</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lumeni Hero V2",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Artifact Image"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "url",
+      "id": "primary_url",
+      "label": "Primary URL"
+    },
+    {
+      "type": "url",
+      "id": "secondary_url",
+      "label": "Secondary URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumeni Hero V2"
+    }
+  ]
+}
+{% endschema %}

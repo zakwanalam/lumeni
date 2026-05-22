@@ -1,0 +1,151 @@
+<section class="bg-black text-white py-24 lg:pt-32">
+  <div class="px-6 mx-auto lg:px-12 max-w-[1440px]">
+    
+    <!-- Hero / Top Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-32 items-center">
+      
+      <!-- Left: Media Gallery -->
+      <div class="flex flex-col space-y-6">
+        <div class="relative overflow-hidden bg-lumeni-surface aspect-[4/5] rounded-sm group">
+          <img src="{{ product.featured_image | img_url: '1200x' }}" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+          <div class="absolute top-8 left-8">
+             <span class="readout-label text-[10px] bg-black bg-opacity-80 px-4 py-2 border border-white border-opacity-10">ENTITY // {{ product.id | slice: -6, 6 }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Purchase Info -->
+      <div class="flex flex-col space-y-12">
+        <div class="flex flex-col space-y-4">
+           <span class="readout-label text-lumeni-accent">PRECISION CORE ARTIFACT</span>
+           <h1 class="text-6xl md:text-8xl font-bold font-display uppercase tracking-tightest leading-[0.9]">
+             {{ product.title | remove: 'PRECISION_CORE' }}
+           </h1>
+           <div class="flex items-baseline gap-4 mt-4">
+              <span class="text-4xl font-bold tracking-tightest text-white">{{ product.price | money }}</span>
+              <span class="text-xs readout-label opacity-40 italic">UNIT CURRENCY // USD</span>
+           </div>
+        </div>
+
+        <div class="border-t border-white border-opacity-10 pt-12 space-y-12">
+           <!-- Form -->
+           {% form 'product', product, class: 'flex flex-col space-y-10' %}
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+
+              <div class="flex flex-col space-y-4">
+                 <span class="readout-label text-[10px] opacity-40">SELECT SIZE / VARIANT</span>
+                 <div class="flex flex-wrap gap-3">
+                    {% for variant in product.variants %}
+                       <button type="button" class="px-6 py-4 border border-white border-opacity-10 text-xs font-bold font-display hover:border-lumeni-accent hover:text-lumeni-accent transition-all cursor-pointer">
+                          {{ variant.title }}
+                       </button>
+                    {% endfor %}
+                 </div>
+              </div>
+
+              <div class="flex flex-col space-y-6">
+                 <input type="number" name="quantity" value="1" min="1" class="hidden">
+                 <button type="submit" class="bg-lumeni-accent text-black py-6 text-xs font-bold tracking-technical uppercase hover:tracking-widest transition-all">
+                    DEPLOY_ARTIFACT →
+                 </button>
+                 <p class="text-[9px] text-lumeni-text-muted uppercase tracking-widest text-center opacity-40">Free shipping on all expedited deployments.</p>
+              </div>
+           {% endform %}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- System Capabilities (3-Col Specs) -->
+    <div class="py-24 border-t border-white border-opacity-10">
+      <div class="flex flex-col space-y-16">
+        <div class="flex flex-col space-y-4">
+           <span class="readout-label">SYSTEM CAPABILITIES</span>
+           <h2 class="text-xl font-bold font-display uppercase italic text-lumeni-text-muted">High-Output Integration</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+           {% for i in (1..3) %}
+             <div class="p-12 bg-lumeni-surface border border-white border-opacity-5 flex flex-col space-y-6">
+                <div class="w-10 h-10 flex items-center justify-center border border-lumeni-accent bg-black">
+                   <svg class="w-5 h-5 text-lumeni-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="1.5"/></svg>
+                </div>
+                <h3 class="text-sm font-bold font-display uppercase tracking-technical">LATTICE STRUCTURE</h3>
+                <p class="text-xs text-lumeni-text-muted leading-relaxed uppercase tracking-widest opacity-60">Modular integration for high-density impact resistance and thermal regulation.</p>
+             </div>
+           {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical Log (Specs vs Line Art) -->
+    <div class="py-24 border-t border-white border-opacity-10">
+       <div class="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
+          <div class="lg:col-span-5 flex flex-col space-y-12">
+             <div class="flex flex-col space-y-4">
+                <span class="readout-label">TECHNICAL LOG</span>
+                <h2 class="text-4xl font-bold font-display uppercase tracking-tightest italic text-white">COMPONENT ANALYTICS</h2>
+             </div>
+             
+             <div class="flex flex-col space-y-6 divide-y divide-white divide-opacity-5">
+                {% for i in (1..4) %}
+                  <div class="flex justify-between items-center py-4">
+                     <span class="readout-label text-[9px] opacity-40">COMPONENT // 0{{ i }}</span>
+                     <span class="text-xs font-bold tracking-technical text-lumeni-text uppercase italic">AEROSPACE_CELLULAR_SHELL</span>
+                  </div>
+                {% endfor %}
+             </div>
+          </div>
+
+          <div class="lg:col-span-7 relative group">
+             <div class="aspect-square bg-lumeni-surface rounded-sm relative overflow-hidden flex items-center justify-center p-24">
+                <img src="{{ product.featured_image | img_url: '1000x' }}" class="w-full h-full object-contain mix-blend-screen opacity-20 filter invert group-hover:opacity-40 transition-opacity">
+                <!-- Overlay Annotations -->
+                <div class="absolute top-1/4 left-1/4 flex flex-col items-center">
+                   <div class="w-2 h-2 bg-lumeni-accent rounded-full animate-pulse"></div>
+                   <div class="h-16 w-px bg-lumeni-accent bg-opacity-20"></div>
+                   <span class="readout-label text-[8px] mt-2">FIELD TESTED V.2</span>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+
+    <!-- Compatible Modules (Product Grid) -->
+    <div class="py-24 border-t border-white border-opacity-10">
+       <div class="flex flex-col space-y-16">
+          <div class="flex justify-between items-end">
+             <div class="flex flex-col space-y-4">
+                <span class="readout-label">COMPATIBLE MODULES</span>
+                <h2 class="text-4xl font-bold font-display uppercase italic text-white">SYSTEM INTEGRATION</h2>
+             </div>
+             <a href="/collections/all" class="readout-label text-[10px] hover:text-lumeni-accent transition-colors">EXPLORE ALL SYSTEMS →</a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+             {% assign recommendations = collections['all'].products | limit: 4 %}
+             {% for rec in recommendations %}
+                <a href="{{ rec.url }}" class="flex flex-col space-y-6 group">
+                   <div class="aspect-square bg-lumeni-surface overflow-hidden">
+                      <img src="{{ rec.featured_image | img_url: '600x' }}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                   </div>
+                   <div class="flex flex-col space-y-1">
+                      <span class="readout-label text-[8px] opacity-40">SERIES // {{ forloop.index }}</span>
+                      <h4 class="text-xs font-bold font-display uppercase tracking-technical">{{ rec.title }}</h4>
+                      <span class="text-xs font-bold text-lumeni-accent italic">{{ rec.price | money }}</span>
+                   </div>
+                </a>
+             {% endfor %}
+          </div>
+       </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main Product v2",
+  "settings": []
+}
+{% endschema %}

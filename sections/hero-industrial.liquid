@@ -1,0 +1,88 @@
+<div class="relative overflow-hidden bg-lumeni-bg py-24 lg:py-32">
+  <div class="max-w-[1440px] px-6 mx-auto lg:px-12">
+    <div class="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
+      
+      <!-- Content Area -->
+      <div class="flex flex-col space-y-8 lg:max-w-xl">
+        <div class="flex flex-col space-y-2">
+          <span class="readout-label">SYSTEM INIT // 2026</span>
+          <h1 class="text-6xl font-extrabold tracking-tightest lg:text-8xl text-lumeni-text uppercase">
+            {{ section.settings.title }}
+          </h1>
+        </div>
+        
+        <p class="text-lg leading-relaxed lg:text-xl text-lumeni-text-muted">
+          {{ section.settings.description }}
+        </p>
+
+        <div class="flex items-center space-x-6 pt-4">
+          <a href="{{ section.settings.button_link }}" class="inline-flex items-center px-10 py-5 text-sm font-bold tracking-technical transition-all duration-300 bg-lumeni-accent text-lumeni-lowest hover:bg-lumeni-bright hover:text-lumeni-accent rounded-sm uppercase">
+            {{ section.settings.button_label }}
+          </a>
+          <a href="#" class="hidden sm:inline-flex items-center px-4 py-2 text-xs font-semibold tracking-technical text-lumeni-accent uppercase transition-colors hover:text-lumeni-text">
+            Technical Specs <span class="ml-2">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Asymmetric Image Placement -->
+      <div class="relative group">
+        <div class="absolute inset-0 transition-opacity opacity-20 bg-lumeni-accent group-hover:opacity-30 blur-3xl"></div>
+        <div class="relative overflow-hidden bg-lumeni-surface rounded-sm">
+          {% if section.settings.image != blank %}
+            <img src="{{ section.settings.image | img_url: '1200x' }}" alt="{{ section.settings.title }}" class="object-cover w-full h-[500px] lg:h-[700px] transform transition-transform duration-[2000ms] group-hover:scale-105 grayscale hover:grayscale-0">
+          {% else %}
+            <div class="w-full h-[500px] lg:h-[700px] bg-lumeni-bright flex items-center justify-center text-lumeni-text-muted font-display text-4xl uppercase">
+              Lumeni_Artifact_Preview
+            </div>
+          {% endif %}
+        </div>
+        <!-- Decorative Elements -->
+        <div class="absolute -bottom-6 -right-6 w-32 h-32 border-b border-r border-lumeni-accent opacity-50"></div>
+        <div class="absolute -top-6 -left-6 w-16 h-16 border-t border-l border-lumeni-accent opacity-50"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Lumeni Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "NEXT GEN PERFORMANCE"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Deeply engineered for the modern technical athlete. Built with zero compromise on aesthetics or performance functionality."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Explore System"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumeni Hero Industrial",
+      "category": "Hero"
+    }
+  ]
+}
+{% endschema %}

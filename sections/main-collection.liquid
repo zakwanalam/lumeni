@@ -1,0 +1,45 @@
+<div class="bg-lumeni-bg py-12 lg:py-20">
+  <div class="max-w-[1440px] px-6 mx-auto lg:px-12">
+    
+    <!-- Collection Header -->
+    <div class="flex flex-col space-y-4 mb-16 max-w-3xl">
+      <span class="readout-label">COLLECTION CATALOG // 01</span>
+      <h1 class="text-5xl font-bold tracking-tightest lg:text-7xl text-lumeni-text uppercase">
+        {{ collection.title }}
+      </h1>
+      {% if collection.description != blank %}
+        <p class="text-lg text-lumeni-text-muted leading-relaxed">
+          {{ collection.description }}
+        </p>
+      {% endif %}
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-6 pb-20">
+      {% paginate collection.products by 24 %}
+        {% for product in collection.products %}
+          {% render 'product-card', product: product %}
+        {% else %}
+          <div class="col-span-full py-20 text-center border border-white border-opacity-5">
+            <span class="readout-label">SYSTEM ERROR // NO ARTIFACTS FOUND</span>
+          </div>
+        {% endfor %}
+        
+        <!-- Pagination -->
+        {% if paginate.pages > 1 %}
+          <div class="col-span-full pt-16 flex justify-center border-t border-lumeni-outline border-opacity-10">
+            {{ paginate | default_pagination }}
+          </div>
+        {% endif %}
+      {% endpaginate %}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Lumeni Main Collection",
+  "settings": []
+}
+{% endschema %}

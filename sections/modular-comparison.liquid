@@ -1,0 +1,56 @@
+<section class="py-24 bg-black overflow-hidden relative border-y border-white border-opacity-5">
+  <div class="px-6 mx-auto lg:px-12 relative z-10">
+    
+    <div class="flex flex-col space-y-6 mb-20 max-w-2xl">
+      <span class="readout-label">COMPARISON // MODEL REF 300</span>
+      <h2 class="text-4xl md:text-5xl font-bold font-display uppercase tracking-tightest leading-none text-white">
+        PRODUCT COMPARISON
+      </h2>
+    </div>
+
+    <!-- Technical Table -->
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="border-b border-white border-opacity-10 py-8">
+            <th class="py-8 px-6 readout-label text-[9px] opacity-40">TECHNICAL SPEC</th>
+            <th class="py-8 px-6 font-display font-bold text-lg uppercase text-lumeni-text italic">LITE EDITION</th>
+            <th class="py-8 px-6 font-display font-bold text-lg uppercase text-lumeni-accent italic">PRO SERIES</th>
+            <th class="py-8 px-6 font-display font-bold text-lg uppercase text-lumeni-text italic">ULTRASYNC</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-white divide-opacity-5">
+          {% for i in (1..5) %}
+            <tr class="group hover:bg-lumeni-surface transition-colors duration-300">
+              <td class="py-8 px-6 text-xs font-bold tracking-technical uppercase text-lumeni-text opacity-60">
+                {% cycle 'BATTERY LIFE', 'FAST CHARGING', 'WIRELESS RANGE', 'WATER RESISTANCE', 'TOTAL WEIGHT' %}
+              </td>
+              <td class="py-8 px-6 text-sm text-lumeni-text-muted">
+                {% cycle '12 HOURS', '15W', '30 FT', 'IPX4', '150G' %}
+              </td>
+              <td class="py-8 px-6 text-sm text-lumeni-accent font-bold">
+                {% cycle '24 HOURS', '45W', '100 FT', 'IPX7', '210G' %}
+              </td>
+              <td class="py-8 px-6 text-sm text-lumeni-text-muted">
+                {% cycle '48 HOURS', '100W', '300 FT', 'IP68', '190G' %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Modular Comparison Chart",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Modular Comparison Chart"
+    }
+  ]
+}
+{% endschema %}

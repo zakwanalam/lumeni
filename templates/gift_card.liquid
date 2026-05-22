@@ -1,0 +1,17 @@
+{% layout none %}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ 'gift_cards.issued.title' | t: value: gift_card.initial_value_display, shop: shop.name }}</title>
+</head>
+<body style="background: #000; color: #fff; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
+  <div style="text-align: center; border: 1px solid #333; padding: 40px;">
+    <h1>LUMENI GIFT CARD</h1>
+    <p>{{ gift_card.initial_value_display }}</p>
+    <p>CODE: {{ gift_card.code | format_code }}</p>
+  </div>
+</body>
+</html>

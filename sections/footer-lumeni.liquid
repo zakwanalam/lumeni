@@ -1,0 +1,77 @@
+<footer class="bg-lumeni-lowest text-lumeni-text py-20 lg:py-28 border-t border-lumeni-outline border-opacity-10">
+  <div class="max-w-[1440px] px-6 mx-auto lg:px-12">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+      
+      <!-- Brand & Info -->
+      <div class="flex flex-col space-y-6">
+        <a href="/" class="text-3xl font-bold tracking-tightest font-display text-lumeni-accent uppercase">
+          LUMENI
+        </a>
+        <p class="text-sm leading-relaxed text-lumeni-text-muted max-w-xs">
+          High-performance technical apparel and hardware. Engineering the future of human motion and digital integration.
+        </p>
+        <div class="flex flex-col pt-4 space-y-1">
+          <span class="readout-label text-[10px]">CORE_STATUS // ONLINE</span>
+          <span class="text-[10px] text-lumeni-text-muted tracking-technical uppercase">LAST_UPDATED: {{ 'now' | date: "%Y.%m.%d" }}</span>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="flex flex-col space-y-6">
+        <h4 class="text-sm font-bold tracking-technical text-lumeni-text uppercase">Navigation</h4>
+        <nav class="flex flex-col space-y-4">
+          {% for link in linklists.footer.links %}
+            <a href="{{ link.url }}" class="text-sm text-lumeni-text-muted hover:text-lumeni-accent transition-colors uppercase tracking-tightest">
+              {{ link.title }}
+            </a>
+          {% endfor %}
+        </nav>
+      </div>
+
+      <!-- Support -->
+      <div class="flex flex-col space-y-6">
+        <h4 class="text-sm font-bold tracking-technical text-lumeni-text uppercase">Support Systems</h4>
+        <nav class="flex flex-col space-y-4">
+          <a href="/pages/contact" class="text-sm text-lumeni-text-muted hover:text-lumeni-accent transition-colors uppercase tracking-tightest">Contact Ops</a>
+          <a href="/pages/shipping" class="text-sm text-lumeni-text-muted hover:text-lumeni-accent transition-colors uppercase tracking-tightest">Fulfillment Logs</a>
+          <a href="/pages/returns" class="text-sm text-lumeni-text-muted hover:text-lumeni-accent transition-colors uppercase tracking-tightest">Return Protocol</a>
+          <a href="/pages/faq" class="text-sm text-lumeni-text-muted hover:text-lumeni-accent transition-colors uppercase tracking-tightest">System FAQ</a>
+        </nav>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="flex flex-col space-y-6">
+        <h4 class="text-sm font-bold tracking-technical text-lumeni-text uppercase">Protocol Updates</h4>
+        <p class="text-sm text-lumeni-text-muted">Receive critical technical updates and early drop notifications.</p>
+        <form class="flex flex-col space-y-3">
+          <input type="email" placeholder="EMAIL ADDRESS" class="bg-lumeni-surface border border-lumeni-outline px-4 py-3 text-xs tracking-technical text-lumeni-text focus:border-lumeni-accent focus:outline-none placeholder-lumeni-text-muted placeholder-opacity-40 rounded-sm">
+          <button type="submit" class="bg-lumeni-accent text-lumeni-lowest px-6 py-3 text-[10px] font-bold tracking-technical uppercase transition-all duration-300 hover:bg-lumeni-bright hover:text-lumeni-accent rounded-sm">
+            INITIALIZE SYNC
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-20 pt-12 border-t border-lumeni-outline border-opacity-10 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="text-[10px] text-lumeni-text-muted tracking-technical uppercase">
+        © 2026 LUMENI CORE INDUSTRIES. ALL RIGHTS RESERVED.
+      </div>
+      <div class="flex items-center space-x-6 text-[10px] text-lumeni-text-muted tracking-technical uppercase font-semibold">
+        <a href="#" class="hover:text-lumeni-accent">Privacy Vault</a>
+        <a href="#" class="hover:text-lumeni-accent">Terms Of Service</a>
+        <a href="#" class="hover:text-lumeni-accent">Cookie Compliance</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Lumeni Footer",
+  "settings": []
+}
+{% endschema %}

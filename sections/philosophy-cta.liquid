@@ -1,0 +1,46 @@
+<div class="py-32 bg-black text-white px-6 mx-auto lg:px-12 max-w-[1440px] flex flex-col items-center text-center space-y-12">
+   <h2 class="text-6xl md:text-8xl font-bold font-display uppercase tracking-tightest leading-none">
+     {{ section.settings.title_line1 }} <br> <span class="text-lumeni-accent">{{ section.settings.title_line2 }}</span>
+   </h2>
+   <a href="{{ section.settings.url }}" class="bg-lumeni-accent text-black px-16 py-6 text-sm font-bold tracking-technical uppercase transition-all hover:tracking-widest relative group">
+      {{ section.settings.button_text }}
+      <span class="absolute right-6 top-1/2 -translate-y-1/2 group-hover:translate-x-2 transition-transform">→</span>
+   </a>
+</div>
+
+{% schema %}
+{
+  "name": "Philosophy CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_line1",
+      "label": "Title Line 1",
+      "default": "UPGRADE YOUR"
+    },
+    {
+      "type": "text",
+      "id": "title_line2",
+      "label": "Title Line 2 (Accent)",
+      "default": "STANDARD."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "EXPLORE THE ARCHIVE"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Link URL",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Philosophy CTA"
+    }
+  ]
+}
+{% endschema %}

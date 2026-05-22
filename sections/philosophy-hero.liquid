@@ -1,0 +1,59 @@
+<div class="relative h-[80vh] flex items-center justify-center overflow-hidden bg-black">
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black z-10"></div>
+  {% if section.settings.image != blank %}
+    {{ section.settings.image | image_url: width: 2000 | image_tag: class: 'absolute inset-0 w-full h-full object-cover opacity-60 grayscale scale-110 hover:scale-100 transition-transform duration-[3000ms]' }}
+  {% else %}
+    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=2000" class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale scale-110">
+  {% endif %}
+  <div class="relative z-20 text-center space-y-8 px-6">
+     <span class="readout-label text-lumeni-accent uppercase">{{ section.settings.label }}</span>
+     <h1 class="text-7xl md:text-9xl font-bold font-display uppercase tracking-tightest leading-none">
+        {{ section.settings.title_line1 }} <br> <span class="text-lumeni-accent italic">{{ section.settings.title_line2 }}</span>
+     </h1>
+     <p class="text-sm md:text-lg text-lumeni-text-muted uppercase tracking-widest max-w-2xl mx-auto leading-relaxed">
+        {{ section.settings.content }}
+     </p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Philosophy Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Top Label",
+      "default": "ESTABLISHED // ALPHA V6"
+    },
+    {
+      "type": "text",
+      "id": "title_line1",
+      "label": "Title Line 1",
+      "default": "ENGINEERING"
+    },
+    {
+      "type": "text",
+      "id": "title_line2",
+      "label": "Title Line 2 (Accent)",
+      "default": "THE INVISIBLE."
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "We don't manufacture products. We engineer high-performance artifacts designed for the extreme demands of modern digital and physical environments."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Philosophy Hero"
+    }
+  ]
+}
+{% endschema %}

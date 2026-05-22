@@ -1,0 +1,76 @@
+<section class="py-24 bg-lumeni-surface">
+  <div class="px-6 mx-auto lg:px-12">
+    
+    <div class="flex flex-col items-center text-center space-y-6 mb-20">
+      <span class="readout-label text-lumeni-accent">COMMUNITY FEEDBACK</span>
+      <h2 class="text-4xl md:text-5xl font-bold font-display uppercase tracking-tightest leading-none text-lumeni-text">
+        CUSTOMER REVIEWS
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      {% for block in section.blocks %}
+        <div class="flex flex-col space-y-8 p-10 bg-black border border-white border-opacity-5 hover:border-lumeni-accent transition-all duration-700">
+          <div class="flex items-center gap-2">
+            {% for i in (1..5) %}
+              <div class="w-1 h-1 bg-lumeni-accent rounded-full"></div>
+            {% endfor %}
+          </div>
+          
+          <blockquote class="text-lg font-light leading-relaxed text-lumeni-text italic">
+            "{{ block.settings.quote | default: "The quality is outstanding. It has become an essential part of my travel kit. Highly recommend for any frequent flyer." }}"
+          </blockquote>
+
+          <div class="flex flex-col space-y-1">
+             <span class="readout-label text-[10px]">{{ block.settings.rank | default: "VERIFIED BUYER" }}</span>
+             <h4 class="text-sm font-bold font-display text-white uppercase italic tracking-technical">{{ block.settings.author | default: "Alex M." }}</h4>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tactical Reports",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "report",
+      "name": "Tactical Report",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "The structural integrity exceeded all mission parameters."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "OPERATOR 01"
+        },
+        {
+          "type": "text",
+          "id": "rank",
+          "label": "Rank/Role",
+          "default": "FIELD SPEC"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tactical Reports",
+      "blocks": [
+        { "type": "report", "settings": { "author": "James B.", "rank": "FREQUENT FLYER" } },
+        { "type": "report", "settings": { "author": "Sarah L.", "rank": "PHOTOGRAPHER" } },
+        { "type": "report", "settings": { "author": "Mike R.", "rank": "TECH ENTHUSIAST" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

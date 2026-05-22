@@ -1,0 +1,97 @@
+<div class="bg-black text-white px-6 mx-auto lg:px-12 max-w-[1440px] py-24 space-y-24">
+    <div class="flex flex-col space-y-4">
+       <span class="readout-label text-lumeni-accent uppercase">{{ section.settings.label }}</span>
+       <h2 class="text-6xl font-bold font-display uppercase tracking-tightest leading-none">{{ section.settings.title }}</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+       {%- for block in section.blocks -%}
+          <div class="space-y-12 group" {{ block.shopify_attributes }}>
+             <div class="aspect-video bg-lumeni-surface overflow-hidden relative">
+                <div class="absolute inset-0 bg-lumeni-accent opacity-0 group-hover:opacity-20 transition-opacity z-10"></div>
+                {% if block.settings.image != blank %}
+                   {{ block.settings.image | image_url: width: 800 | image_tag: class: 'w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-110' }}
+                {% else %}
+                   <img src="https://plus.unsplash.com/premium_photo-1661301075841-f604ec28203b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-110">
+                {% endif %}
+             </div>
+             <div class="space-y-6">
+                <div class="flex flex-col space-y-2">
+                    <span class="readout-label text-[10px] opacity-40">0{{ forloop.index }} // {{ block.settings.step_label }}</span>
+                    <h3 class="text-2xl font-bold font-display uppercase tracking-technical">{{ block.settings.title }}</h3>
+                </div>
+                <p class="text-[10px] text-lumeni-text-muted leading-relaxed uppercase tracking-widest opacity-60">{{ block.settings.content }}</p>
+             </div>
+          </div>
+       {%- endfor -%}
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Philosophy Process",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Top Label",
+      "default": "UP ALPHA // PHASES // V3"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "THE PROCESS."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "phase",
+      "name": "Process Phase",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Phase Image"
+        },
+        {
+          "type": "text",
+          "id": "step_label",
+          "label": "Step Label",
+          "default": "PHASE LOG"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Phase Title",
+          "default": "Material Selection"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Description",
+          "default": "Every component undergoes rigorous stress testing against simulated extreme environment conditions."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Philosophy Process",
+      "blocks": [
+        {
+          "type": "phase",
+          "settings": { "title": "Material Selection" }
+        },
+        {
+          "type": "phase",
+          "settings": { "title": "Prototype Evolution" }
+        },
+        {
+          "type": "phase",
+          "settings": { "title": "Extreme Calibration" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

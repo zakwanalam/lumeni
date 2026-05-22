@@ -1,0 +1,30 @@
+{
+  "sections": {
+    "hero": {
+      "type": "philosophy-hero"
+    },
+    "mission": {
+      "type": "philosophy-mission"
+    },
+    "process": {
+      "type": "philosophy-process"
+    },
+    "timeline": {
+      "type": "philosophy-timeline"
+    },
+    "testimonial": {
+      "type": "philosophy-testimonial"
+    },
+    "cta": {
+      "type": "philosophy-cta"
+    }
+  },
+  "order": [
+    "hero",
+    "mission",
+    "process",
+    "timeline",
+    "testimonial",
+    "cta"
+  ]
+}

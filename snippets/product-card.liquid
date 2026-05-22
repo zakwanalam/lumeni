@@ -1,0 +1,68 @@
+{% comment %}
+    Reusable Lumeni Product Card
+    Accepts:
+    - product: {Object} Product object
+{% endcomment %}
+
+<div class="relative group flex flex-col bg-lumeni-surface rounded-sm overflow-hidden transition-all duration-500 hover:shadow-frosted h-full">
+  <!-- Image Area (Asymmetric Focus) -->
+  <a href="{{ product.url | within: collection }}" class="relative overflow-hidden aspect-[3/4]">
+    <img 
+      src="{{ product.featured_image | img_url: '800x' }}" 
+      alt="{{ product.title | escape }}" 
+      class="object-cover w-full h-full transition-transform duration-700 group-hover:rotate-1 group-hover:scale-105"
+      loading="lazy"
+    >
+    
+    <!-- Precision Tag (Sale/New) -->
+    {% if product.compare_at_price > product.price %}
+      <div class="absolute top-4 left-4 flex flex-col space-y-1">
+        <span class="bg-lumeni-accent text-lumeni-lowest text-[10px] font-bold px-3 py-1 tracking-technical uppercase rounded-sm">
+          SALE EVENT
+        </span>
+      </div>
+    {% endif %}
+
+    <!-- Quick Purchase Hover Overlay -->
+    <div class="absolute inset-0 flex items-center justify-center transition-opacity opacity-0 bg-lumeni-lowest bg-opacity-40 group-hover:opacity-100">
+      <button class="px-6 py-3 text-xs font-bold tracking-technical transition-all duration-300 bg-lumeni-text text-lumeni-lowest hover:bg-lumeni-accent rounded-sm uppercase">
+        Quick View
+      </button>
+    </div>
+  </a>
+  
+
+  <!-- Info Area (Industrial Typography) -->
+  <div class="flex flex-col p-6 space-y-4">
+    <div class="flex flex-col">
+      <span class="text-[10px] tracking-technical text-lumeni-accent opacity-70 uppercase mb-1">
+        ITEM {{ product.id | slice: -4, 4 }}
+      </span>
+      <h3 class="text-lg font-bold tracking-tightest font-display text-lumeni-text hover:text-lumeni-accent transition-colors uppercase">
+        <a href="{{ product.url | within: collection }}">
+          {{ product.title }}
+        </a>
+      </h3>
+    </div>
+
+    <!-- Price Section -->
+    <div class="flex items-baseline space-x-3">
+      <span class="text-xl font-bold tracking-tightest text-lumeni-accent">
+        {{ product.price | money }}
+      </span>
+      {% if product.compare_at_price > product.price %}
+        <span class="text-sm line-through text-lumeni-text-muted">
+          {{ product.compare_at_price | money }}
+        </span>
+      {% endif %}
+    </div>
+
+    <!-- Interactive Logic (Add to Cart) -->
+    <form method="post" action="/cart/add" class="mt-auto pt-4">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+      <button type="submit" class="w-full py-3 text-[10px] font-bold tracking-technical transition-all duration-300 border border-lumeni-outline text-lumeni-text hover:bg-lumeni-accent hover:border-lumeni-accent hover:text-lumeni-lowest rounded-sm uppercase">
+        Initialize Order
+      </button>
+    </form>
+  </div>
+</div>

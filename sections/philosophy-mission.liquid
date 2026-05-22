@@ -1,0 +1,90 @@
+<div class="bg-black text-white px-6 mx-auto lg:px-12 max-w-[1440px] py-24">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+       <div class="space-y-12">
+          <div class="space-y-4">
+             <span class="readout-label text-lumeni-accent uppercase">{{ section.settings.label }}</span>
+             <h2 class="text-5xl font-bold font-display uppercase tracking-tightest leading-none">{{ section.settings.title }}</h2>
+          </div>
+          <div class="space-y-8">
+             <p class="text-lg text-lumeni-text-muted leading-relaxed uppercase tracking-widest">{{ section.settings.content_main }}</p>
+             <p class="text-[11px] text-lumeni-text-muted leading-loose opacity-60 uppercase tracking-widest">{{ section.settings.content_secondary }}</p>
+          </div>
+          <div class="pt-8 border-t border-white border-opacity-10">
+             <span class="readout-label text-[10px] opacity-40 italic">LOGIC // CONDUCT // PERFORMANCE</span>
+          </div>
+       </div>
+       <div class="grid grid-cols-2 gap-4">
+          <div class="aspect-square bg-lumeni-surface overflow-hidden">
+             {% if section.settings.image != blank %}
+               {{ section.settings.image | image_url: width: 800 | image_tag: class: 'w-full h-full object-cover grayscale' }}
+             {% else %}
+               <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale">
+             {% endif %}
+          </div>
+          <div class="aspect-square bg-lumeni-lowest flex items-center justify-center p-8 border border-white border-opacity-5 relative overflow-hidden">
+             {% if section.settings.image_secondary != blank %}
+                {{ section.settings.image_secondary | image_url: width: 800 | image_tag: class: 'absolute inset-0 w-full h-full object-cover grayscale opacity-40' }}
+             {% endif %}
+             <div class="relative z-10 flex flex-col items-center">
+                <div class="w-full h-1 bg-lumeni-accent absolute bottom-[-32px] left-[-32px] w-[200%] animate-pulse"></div>
+                <span class="readout-label text-[10px] animate-pulse">
+                   {{ section.settings.status_label | default: 'SYSTEMS_ACTIVE' }}
+                </span>
+             </div>
+          </div>
+       </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Philosophy Mission",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Mission Image (Left)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_secondary",
+      "label": "Technical Background (Right)"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Top Label",
+      "default": "MISSION STATS // 01"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "OUR MISSION"
+    },
+    {
+      "type": "textarea",
+      "id": "content_main",
+      "label": "Main Content",
+      "default": "At Lumeni, our philosophy is anchored in material excellence. We believe that every tool is an extension of the operator. If the tool fails, the objective fails."
+    },
+    {
+      "type": "textarea",
+      "id": "content_secondary",
+      "label": "Secondary Content",
+      "default": "We reject the cycle of planned obsolescence. Our engineering team prioritizes structural integrity over seasonal trends, creating gear that endures as long as your ambition."
+    },
+    {
+      "type": "text",
+      "id": "status_label",
+      "label": "Technical Status Label",
+      "default": "SYSTEMS_ACTIVE"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Philosophy Mission"
+    }
+  ]
+}
+{% endschema %}

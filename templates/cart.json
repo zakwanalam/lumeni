@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "hero-industrial",
+      "settings": {
+        "title": "CART_MANIFEST",
+        "description": "Awaiting final fulfillment authorization."
+      }
+    }
+  },
+  "order": ["main"]
+}

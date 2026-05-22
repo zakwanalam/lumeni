@@ -1,0 +1,96 @@
+<section class="py-24 bg-black overflow-hidden relative">
+  <div class="px-6 mx-auto lg:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      
+      <!-- Text & Spec List -->
+      <div class="flex flex-col space-y-12">
+        <div class="flex flex-col space-y-4">
+           <span class="readout-label">DURABILITY // 02</span>
+           <h2 class="text-5xl md:text-6xl font-bold font-display uppercase tracking-tightest leading-none text-lumeni-text">
+             BUILT FOR THE<br>JOURNEY
+           </h2>
+        </div>
+
+        <div class="space-y-8">
+           {% for block in section.blocks %}
+             <div class="flex items-start gap-4 p-6 border border-white border-opacity-5 bg-lumeni-surface hover:border-lumeni-accent transition-colors duration-500">
+               <span class="text-lumeni-accent text-xl font-bold">+</span>
+               <div class="flex flex-col space-y-1">
+                 <h3 class="text-sm font-bold tracking-technical uppercase text-lumeni-text">{{ block.settings.title }}</h3>
+                 <p class="text-xs text-lumeni-text-muted leading-relaxed">{{ block.settings.content }}</p>
+               </div>
+             </div>
+           {% endfor %}
+        </div>
+      </div>
+
+      <!-- Material Visual Block -->
+      <div class="relative group">
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: class: 'w-full h-full object-cover filter grayscale contrast-150 brightness-75 group-hover:grayscale-0 transition-all duration-1000' }}
+        {% else %}
+          <div class="w-full aspect-square bg-[#0a0a0a] flex items-center justify-center p-12 overflow-hidden border border-white border-opacity-10">
+            <div class="grid grid-cols-10 gap-2 opacity-5 scale-150 rotate-45">
+               {% for i in (1..100) %}<div class="w-2 h-2 bg-white"></div>{% endfor %}
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center">
+               <div class="readout-label opacity-20">MATERIAL_DATA_MISSING</div>
+            </div>
+          </div>
+        {% endif %}
+        
+        <!-- Status Indicator Decal -->
+        <div class="absolute top-8 left-8 p-4 bg-black border border-lumeni-accent border-opacity-20 backdrop-blur-md">
+           <div class="flex items-center gap-3">
+             <div class="w-2 h-2 bg-lumeni-accent animate-pulse rounded-full"></div>
+             <span class="readout-label text-[8px]">CORE TEMPERATURE // STABLE</span>
+           </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Unyielding Resistance",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Material Visual"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "Technical Spec",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Spec Heading",
+          "default": "REINFORCED_CHASSIS"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Spec Content",
+          "default": "High-density polymer composite with integrated shock absorption matrix for extreme environmental stress."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Built For The Journey",
+      "blocks": [
+        { "type": "spec", "settings": { "title": "AEROSPACE GRADE SHELL", "content": "Impact-resistant materials that protect your tech from drops and daily wear." } },
+        { "type": "spec", "settings": { "title": "SMART THERMAL CONTROL", "content": "Integrated heat dissipation to keep your gadgets running at peak performance." } },
+        { "type": "spec", "settings": { "title": "WEATHERPROOF SHIELD", "content": "Water-resistant coatings to ensure your gear stays dry in any environment." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

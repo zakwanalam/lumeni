@@ -1,0 +1,40 @@
+<div id="MobileMenuDrawer" class="drawer fixed top-0 left-0 w-full h-full bg-lumeni-bg z-[100] transform -translate-x-full transition-transform duration-500 overflow-y-auto">
+  <div class="px-6 py-8 flex flex-col h-full">
+    
+    <!-- Drawer Header -->
+    <div class="flex items-center justify-between mb-12">
+      <div class="text-2xl font-bold tracking-tightest font-display text-lumeni-accent uppercase">
+        LUMENI
+      </div>
+      <button class="CloseDrawer text-lumeni-text hover:text-lumeni-accent transition-colors" data-target="MobileMenuDrawer">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <!-- Navigation List -->
+    <nav class="flex flex-col space-y-8">
+      {% for link in linklists.main-menu.links %}
+        {% if link.title contains 'Journal' or link.title contains 'JOURNAL' %}{% continue %}{% endif %}
+        <a href="{{ link.url }}" class="text-3xl font-bold tracking-tightest text-lumeni-text hover:text-lumeni-accent transition-colors uppercase">
+          {{ link.title }}
+        </a>
+      {% endfor %}
+    </nav>
+
+    <!-- Support Section -->
+    <div class="mt-auto pt-12 border-t border-lumeni-outline border-opacity-10 space-y-6">
+      <span class="readout-label text-xs">SYSTEM_SUPPORT</span>
+      <div class="grid grid-cols-2 gap-4">
+        <a href="/pages/contact" class="text-xs text-lumeni-text-muted hover:text-lumeni-accent transition-colors uppercase tracking-technical">Contact</a>
+        <a href="/pages/faq" class="text-xs text-lumeni-text-muted hover:text-lumeni-accent transition-colors uppercase tracking-technical">FAQ</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  #MobileMenuDrawer.active {
+    transform: translateX(0);
+  }
+</style>
