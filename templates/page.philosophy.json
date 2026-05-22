@@ -21,6 +21,8 @@
     "mission": {
       "type": "philosophy-mission",
       "settings": {
+        "image": "shopify://shop_images/Lumeni_Ark_40L_backpack_concrete_202605221234.jpg",
+        "image_secondary": "shopify://shop_images/Lumeni_Core_65W_GaN_charger_202605221331.jpg",
         "label": "MISSION STATS",
         "title": "OUR MISSION",
         "content_main": "At Lumeni, our philosophy is anchored in material excellence. We believe that every tool is an extension of the operator. If the tool fails, the objective fails.",
