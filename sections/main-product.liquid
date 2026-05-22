@@ -91,8 +91,9 @@
                 {% for i in (1..4) %}
                   <div class="flex justify-between items-center py-4">
                      <span class="readout-label text-[9px] opacity-40">COMPONENT  0{{ i }}</span>
+                     {% assign component_key = "component_" | append: i %}
                      <span class="text-xs font-bold tracking-technical text-lumeni-text uppercase italic">
-                       {{ product.metafields.custom["component_" | append: i] }}
+                       {{ product.metafields.custom[component_key] }}
                      </span>
                   </div>
                 {% endfor %}
