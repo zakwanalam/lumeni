@@ -1,29 +1,54 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
-      "type": "philosophy-hero"
+      "type": "philosophy-hero",
+      "settings": {
+        "label": "ESTABLISHED // ALPHA V6",
+        "title_line1": "ENGINEERING",
+        "title_line2": "THE INVISIBLE.",
+        "content": "We don't manufacture products. We engineer high-performance artifacts designed for the extreme demands of modern digital and physical environments."
+      }
     },
     "mission": {
-      "type": "philosophy-mission"
-    },
-    "process": {
-      "type": "philosophy-process"
-    },
-    "timeline": {
-      "type": "philosophy-timeline"
+      "type": "philosophy-mission",
+      "settings": {
+        "label": "MISSION STATS",
+        "title": "OUR MISSION",
+        "content_main": "At Lumeni, our philosophy is anchored in material excellence. We believe that every tool is an extension of the operator. If the tool fails, the objective fails.",
+        "content_secondary": "We reject the cycle of planned obsolescence. Our engineering team prioritizes structural integrity over seasonal trends, creating gear that endures as long as your ambition.",
+        "status_label": "SYSTEMS_ACTIVE"
+      }
     },
     "testimonial": {
-      "type": "philosophy-testimonial"
+      "type": "philosophy-testimonial",
+      "settings": {
+        "quote": "Lumeni represents the pinnacle of industrial luxury. Their attention to material science and interface ergonomics is unmatched in the modern market.",
+        "author": "MARCUS REID",
+        "author_title": "CHIEF DESIGNER - ARCH SYSTEMS"
+      }
     },
     "cta": {
-      "type": "philosophy-cta"
+      "type": "philosophy-cta",
+      "settings": {
+        "title_line1": "UPGRADE YOUR",
+        "title_line2": "STANDARD.",
+        "button_text": "EXPLORE THE ARCHIVE",
+        "url": "shopify://collections/all"
+      }
     }
   },
   "order": [
     "hero",
     "mission",
-    "process",
-    "timeline",
     "testimonial",
     "cta"
   ]
