@@ -29,14 +29,14 @@
 
         <div class="border-t border-white border-opacity-10 pt-12 space-y-12">
            <!-- Form -->
-           {% form 'product', product, class: 'flex flex-col space-y-10' %}
-              <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+           <form id="ProductForm" class="flex flex-col space-y-10">
+              <input type="hidden" name="id" id="VariantId" value="{{ product.variants.first.id }}">
 
               <div class="flex flex-col space-y-4">
                  <span class="readout-label text-[10px] opacity-40">SELECT SIZE / VARIANT</span>
                  <div class="flex flex-wrap gap-3">
                     {% for variant in product.variants %}
-                       <button type="button" class="px-6 py-4 border border-white border-opacity-10 text-xs font-bold font-display hover:border-lumeni-accent hover:text-lumeni-accent transition-all cursor-pointer">
+                       <button type="button" class="VariantButton px-6 py-4 border border-white border-opacity-10 text-xs font-bold font-display hover:border-lumeni-accent hover:text-lumeni-accent transition-all cursor-pointer" data-variant-id="{{ variant.id }}">
                           {{ variant.title }}
                        </button>
                     {% endfor %}
@@ -44,13 +44,13 @@
               </div>
 
               <div class="flex flex-col space-y-6">
-                 <input type="number" name="quantity" value="1" min="1" class="hidden">
+                 <input type="number" name="quantity" id="Quantity" value="1" min="1" class="hidden">
                  <button type="submit" class="bg-lumeni-accent text-black py-6 text-xs font-bold tracking-technical uppercase hover:tracking-widest transition-all">
                     Add To Cart
                  </button>
                  <p class="text-[9px] text-lumeni-text-muted uppercase tracking-widest text-center opacity-40">Free shipping on all expedited deployments.</p>
               </div>
-           {% endform %}
+           </form>
         </div>
       </div>
 
@@ -147,6 +147,65 @@
 
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('ProductForm');
+    const variantButtons = document.querySelectorAll('.VariantButton');
+    const variantIdInput = document.getElementById('VariantId');
+    
+    // Handle variant selection
+    variantButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Remove active state from all buttons
+        variantButtons.forEach(btn => {
+          btn.classList.remove('border-lumeni-accent', 'text-lumeni-accent');
+          btn.classList.add('border-white', 'border-opacity-10');
+        });
+        
+        // Add active state to clicked button
+        button.classList.add('border-lumeni-accent', 'text-lumeni-accent');
+        button.classList.remove('border-white', 'border-opacity-10');
+        
+        // Update hidden variant ID
+        variantIdInput.value = button.dataset.variantId;
+      });
+    });
+    
+    // Handle form submission
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const variantId = variantIdInput.value;
+      const quantity = document.getElementById('Quantity').value;
+      
+      // Add to cart via AJAX
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          items: [{
+            id: variantId,
+            quantity: parseInt(quantity)
+          }]
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Open cart drawer instead of redirecting
+        UI.openDrawer('CartDrawer');
+      })
+      .catch(error => {
+        console.error('Error adding to cart:', error);
+        alert('Error adding item to cart');
+      });
+    });
+  });
+</script>
 
 {% schema %}
 {
