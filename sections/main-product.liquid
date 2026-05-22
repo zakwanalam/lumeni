@@ -44,12 +44,62 @@
               </div>
 
               <div class="flex flex-col space-y-6">
-                 <input type="number" name="quantity" value="1" min="1" class="hidden">
-                 <button type="submit" class="bg-lumeni-accent text-black py-6 text-xs font-bold tracking-technical uppercase hover:tracking-widest transition-all">
-                    DEPLOY_ARTIFACT →
-                 </button>
-                 <p class="text-[9px] text-lumeni-text-muted uppercase tracking-widest text-center opacity-40">Free shipping on all expedited deployments.</p>
-              </div>
+               <input type="number" name="quantity" value="1" min="1" class="hidden">
+            
+               <button
+                  type="submit"
+                  id="deploy-artifact-btn"
+                  class="bg-lumeni-accent text-black py-6 text-xs font-bold tracking-technical uppercase hover:tracking-widest transition-all"
+               >
+                  DEPLOY_ARTIFACT →
+               </button>
+            
+               <p class="text-[9px] text-lumeni-text-muted uppercase tracking-widest text-center opacity-40">
+                  Free shipping on all expedited deployments.
+               </p>
+            </div>
+            
+            <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              const form = document.querySelector('form[action="/cart/add"]');
+            
+              if (!form) return;
+            
+              form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+            
+                const formData = new FormData(form);
+            
+                try {
+                  const response = await fetch('/cart/add.js', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                      'Accept': 'application/json'
+                    }
+                  });
+            
+                  const data = await response.json();
+            
+                  console.log('Added to cart:', data);
+            
+                  const button = document.getElementById('deploy-artifact-btn');
+            
+                  button.innerText = 'ARTIFACT DEPLOYED ✓';
+            
+                  setTimeout(() => {
+                    button.innerText = 'DEPLOY_ARTIFACT →';
+                  }, 2000);
+            
+                  // Optional: open cart drawer automatically
+                  document.dispatchEvent(new CustomEvent('cart:refresh'));
+            
+                } catch (error) {
+                  console.error(error);
+                }
+              });
+            });
+            </script>
            {% endform %}
         </div>
       </div>
@@ -91,8 +141,9 @@
                 {% for i in (1..4) %}
                   <div class="flex justify-between items-center py-4">
                      <span class="readout-label text-[9px] opacity-40">COMPONENT  0{{ i }}</span>
-                     <span class="text-xs font-bold tracking-technical text-lumeni-text uppercase italic">AEROSPACE_CELLULAR_SHELL</span>
-                  </div>
+                     <span class="text-xs font-bold tracking-technical text-lumeni-text uppercase italic">
+                        {{ product.metafields.custom["component_" | append: i] }}
+                      </span>               </div>
                 {% endfor %}
              </div>
           </div>
