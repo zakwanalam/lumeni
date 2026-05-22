@@ -27,7 +27,7 @@
             "image": "shopify://shop_images/Lumeni_Core_65W_GaN_charger_202605221305.jpg",
             "label": "SYS 01",
             "heading": "MODULAR ARMOR",
-            "url": ""
+            "url": "shopify://collections/all"
           }
         },
         "b2": {
@@ -36,7 +36,7 @@
             "image": "shopify://shop_images/Lumeni_Core_65W_GaN_charger_202605221236.jpg",
             "label": "SYS 02",
             "heading": "power Banks",
-            "url": ""
+            "url": "shopify://collections/all"
           }
         },
         "b3": {
@@ -45,7 +45,7 @@
             "image": "shopify://shop_images/Lumeni_Core_65W_GaN_charger_202605221239.jpg",
             "label": "SYS 03",
             "heading": "Sleeves",
-            "url": ""
+            "url": "shopify://collections"
           }
         },
         "b4": {
@@ -54,7 +54,7 @@
             "image": "shopify://shop_images/Lumeni_Core_65W_GaN_charger_202605221318.jpg",
             "label": "SYS 04",
             "heading": "Carry",
-            "url": ""
+            "url": "shopify://collections/all"
           }
         }
       },
