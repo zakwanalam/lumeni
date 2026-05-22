@@ -95,11 +95,14 @@
         "s2",
         "s3"
       ],
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/Lumeni_Core_65W_GaN_charger_202605221326.jpg"
+      }
     },
     "artifact": {
       "type": "flagship-artifact",
       "settings": {
+        "image": "shopify://shop_images/Lumeni_Core_65W_GaN_charger_202605221328.jpg",
         "url": "/products/flagship-unit"
       }
     },
@@ -114,15 +117,15 @@
           "type": "report",
           "settings": {
             "quote": "The structural integrity exceeded all mission parameters.",
-            "author": "ALPHA_01",
-            "rank": "SR_OPERATOR"
+            "author": "David Henry",
+            "rank": "SR OPERATOR"
           }
         },
         "r2": {
           "type": "report",
           "settings": {
             "quote": "The structural integrity exceeded all mission parameters.",
-            "author": "DELTA_04",
+            "author": "Sualeh Sheikh",
             "rank": "ENGINEER"
           }
         },
@@ -130,8 +133,8 @@
           "type": "report",
           "settings": {
             "quote": "The structural integrity exceeded all mission parameters.",
-            "author": "OMEGA_09",
-            "rank": "PROTOCOL_LEAD"
+            "author": "Luca Peterson",
+            "rank": "PROTOCOL LEAD"
           }
         }
       },
