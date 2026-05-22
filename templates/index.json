@@ -12,6 +12,7 @@
     "hero": {
       "type": "hero-lumeni-v2",
       "settings": {
+        "image": "shopify://shop_images/Lumeni_Core_65W_GaN_charger_202605221331.jpg",
         "description": "High-performance technical gear for the next generation of industrial operators. Precision-built. Protocol-activated.",
         "primary_url": "/collections/all",
         "secondary_url": "/pages/specs"
