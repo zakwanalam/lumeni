@@ -1,8 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero-lumeni-v2",
       "settings": {
+        "image": "shopify://shop_images/Lumeni_Core_65W_GaN_charger_202605221331.jpg",
         "description": "High-performance technical gear for the next generation of industrial operators. Precision-built. Protocol-activated.",
         "primary_url": "/collections/all",
         "secondary_url": "/pages/specs"
@@ -11,27 +21,89 @@
     "archetypes": {
       "type": "core-archetypes",
       "blocks": {
-        "b1": { "type": "archetype", "settings": { "heading": "MODULAR ARMOR", "label": "SYS_01" } },
-        "b2": { "type": "archetype", "settings": { "heading": "THERMAL CORE", "label": "SYS_02" } },
-        "b3": { "type": "archetype", "settings": { "heading": "SHELL GRID", "label": "SYS_03" } },
-        "b4": { "type": "archetype", "settings": { "heading": "CORE LINK", "label": "SYS_04" } }
+        "b1": {
+          "type": "archetype",
+          "settings": {
+            "image": "shopify://shop_images/Lumeni_Core_65W_GaN_charger_202605221305.jpg",
+            "label": "SYS 01",
+            "heading": "MODULAR ARMOR",
+            "url": ""
+          }
+        },
+        "b2": {
+          "type": "archetype",
+          "settings": {
+            "image": "shopify://shop_images/Lumeni_Core_65W_GaN_charger_202605221236.jpg",
+            "label": "SYS 02",
+            "heading": "power Banks",
+            "url": ""
+          }
+        },
+        "b3": {
+          "type": "archetype",
+          "settings": {
+            "image": "shopify://shop_images/Lumeni_Core_65W_GaN_charger_202605221239.jpg",
+            "label": "SYS 03",
+            "heading": "Sleeves",
+            "url": ""
+          }
+        },
+        "b4": {
+          "type": "archetype",
+          "settings": {
+            "image": "shopify://shop_images/Lumeni_Core_65W_GaN_charger_202605221318.jpg",
+            "label": "SYS 04",
+            "heading": "Carry",
+            "url": ""
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4"],
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
       "settings": {}
     },
     "resistance": {
       "type": "unyielding-resistance",
       "blocks": {
-        "s1": { "type": "spec", "settings": { "title": "CARBON_FIBER_WEAVE" } },
-        "s2": { "type": "spec", "settings": { "title": "THERMO_INSULATION" } },
-        "s3": { "type": "spec", "settings": { "title": "KINETIC_DAMPING" } }
+        "s1": {
+          "type": "spec",
+          "settings": {
+            "title": "CARBON FIBER WEAVE",
+            "content": "Ultra-lightweight composite shell rated for impact resistance. Maintains structural integrity under load without adding bulk."
+          }
+        },
+        "s2": {
+          "type": "spec",
+          "settings": {
+            "title": "THERMO INSULATION",
+            "content": "Multi-layer thermal barrier regulates internal temperature. Protects electronics and perishables in extreme climates."
+          }
+        },
+        "s3": {
+          "type": "spec",
+          "settings": {
+            "title": "KINETIC DAMPING",
+            "content": "Suspension-load system absorbs shock and vibration. Reduces strain on gear during rapid movement or uneven terrain."
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3"],
-      "settings": {}
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Lumeni_Core_65W_GaN_charger_202605221326.jpg"
+      }
     },
     "artifact": {
       "type": "flagship-artifact",
       "settings": {
+        "image": "shopify://shop_images/Lumeni_Core_65W_GaN_charger_202605221328.jpg",
         "url": "/products/flagship-unit"
       }
     },
@@ -42,11 +114,36 @@
     "reports": {
       "type": "tactical-reports",
       "blocks": {
-        "r1": { "type": "report", "settings": { "author": "ALPHA_01", "rank": "SR_OPERATOR" } },
-        "r2": { "type": "report", "settings": { "author": "DELTA_04", "rank": "ENGINEER" } },
-        "r3": { "type": "report", "settings": { "author": "OMEGA_09", "rank": "PROTOCOL_LEAD" } }
+        "r1": {
+          "type": "report",
+          "settings": {
+            "quote": "The structural integrity exceeded all mission parameters.",
+            "author": "David Henry",
+            "rank": "SR OPERATOR"
+          }
+        },
+        "r2": {
+          "type": "report",
+          "settings": {
+            "quote": "The structural integrity exceeded all mission parameters.",
+            "author": "Sualeh Sheikh",
+            "rank": "ENGINEER"
+          }
+        },
+        "r3": {
+          "type": "report",
+          "settings": {
+            "quote": "The structural integrity exceeded all mission parameters.",
+            "author": "Luca Peterson",
+            "rank": "PROTOCOL LEAD"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
       "settings": {}
     }
   },
