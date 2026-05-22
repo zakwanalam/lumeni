@@ -89,10 +89,12 @@
              
              <div class="flex flex-col space-y-6 divide-y divide-white divide-opacity-5">
                 {% for i in (1..4) %}
-                  <div class="flex justify-between items-center py-4 group">
+                  <div class="flex justify-between items-center py-4">
                      <span class="readout-label text-[9px] opacity-40">COMPONENT  0{{ i }}</span>
                      {% assign component_key = "component_" | append: i %}
-                     <input type="text" class="ComponentInput text-xs font-bold tracking-technical text-lumeni-text uppercase italic bg-transparent border-b border-transparent hover:border-lumeni-accent focus:border-lumeni-accent focus:outline-none px-2 py-1 transition-colors" data-component="{{ i }}" value="{{ product.metafields.custom[component_key] | default: '' }}">
+                     <span class="text-xs font-bold tracking-technical text-lumeni-text uppercase italic">
+                       {{ product.metafields.custom[component_key] | default: '' }}
+                     </span>
                   </div>
                 {% endfor %}
              </div>
@@ -148,7 +150,6 @@
     const form = document.getElementById('ProductForm');
     const variantButtons = document.querySelectorAll('.VariantButton');
     const variantIdInput = document.getElementById('VariantId');
-    const componentInputs = document.querySelectorAll('.ComponentInput');
     
     // Handle variant selection
     variantButtons.forEach(button => {
@@ -167,28 +168,6 @@
         
         // Update hidden variant ID
         variantIdInput.value = button.dataset.variantId;
-      });
-    });
-    
-    // Handle component input changes
-    componentInputs.forEach(input => {
-      input.addEventListener('change', (e) => {
-        const componentNum = e.target.dataset.component;
-        const value = e.target.value;
-        
-        console.log(`Component ${componentNum} updated to: ${value}`);
-        // Note: To persist these changes, you would need to:
-        // 1. Create a Shopify app with metafield write permissions
-        // 2. Or use Shopify's Theme Store app
-        // 3. Or implement a custom backend endpoint
-      });
-      
-      input.addEventListener('focus', (e) => {
-        e.target.classList.add('border-lumeni-accent');
-      });
-      
-      input.addEventListener('blur', (e) => {
-        e.target.classList.remove('border-lumeni-accent');
       });
     });
     

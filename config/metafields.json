@@ -1,0 +1,29 @@
+{
+  "namespace": "custom",
+  "definitions": [
+    {
+      "key": "component_1",
+      "name": "Component 01",
+      "description": "Technical component field 01",
+      "type": "single_line_text_field"
+    },
+    {
+      "key": "component_2",
+      "name": "Component 02",
+      "description": "Technical component field 02",
+      "type": "single_line_text_field"
+    },
+    {
+      "key": "component_3",
+      "name": "Component 03",
+      "description": "Technical component field 03",
+      "type": "single_line_text_field"
+    },
+    {
+      "key": "component_4",
+      "name": "Component 04",
+      "description": "Technical component field 04",
+      "type": "single_line_text_field"
+    }
+  ]
+}
