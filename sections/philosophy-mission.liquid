@@ -27,9 +27,9 @@
              {% endif %}
              <div class="relative z-10 flex flex-col items-center">
                 <div class="w-full h-1 bg-lumeni-accent absolute bottom-[-32px] left-[-32px] w-[200%] animate-pulse"></div>
-                <span class="readout-label text-[10px] animate-pulse">
+                {% comment %} <span class="readout-label text-[10px] animate-pulse">
                    {{ section.settings.status_label | default: 'SYSTEMS_ACTIVE' }}
-                </span>
+                </span> {% endcomment %}
              </div>
           </div>
        </div>
