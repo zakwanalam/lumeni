@@ -91,6 +91,7 @@
                 {% for i in (1..4) %}
                   <div class="flex justify-between items-center py-4">
                      <span class="readout-label text-[9px] opacity-40">COMPONENT  0{{ i }}</span>
+                     <span class="text-xs font-bold tracking-technical text-lumeni-text uppercase italic">AEROSPACE_CELLULAR_SHELL</span>
                   </div>
                 {% endfor %}
              </div>
@@ -98,7 +99,7 @@
 
           <div class="lg:col-span-7 relative group">
              <div class="aspect-square bg-lumeni-surface rounded-sm relative overflow-hidden flex items-center justify-center p-24">
-                <img src="{{ product.featured_image | img_url: '1000x' }}" class="w-full h-full object-contain opacity-100  group-hover:opacity-40 transition-opacity">
+                <img src="{{ product.featured_image | img_url: '1000x' }}" class="w-full h-full object-contain  group-hover:opacity-40 transition-opacity">
                 <!-- Overlay Annotations -->
                 <div class="absolute top-1/4 left-1/4 flex flex-col items-center">
                    <div class="w-2 h-2 bg-lumeni-accent rounded-full animate-pulse"></div>
